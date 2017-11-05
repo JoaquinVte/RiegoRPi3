@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Sistema de riego</title>
+	<link href="css/github.min.css" rel="stylesheet" >
+	<link href="css/bootstrap.min.css" rel="stylesheet">
+	<link href="css/font-awesome.min.css" rel="stylesheet">
+	<link href="css/bootstrap-toggle.min.css" rel="stylesheet">
+	<link href="doc/stylesheet.css" rel="stylesheet">
+	<script src="js/jquery-2.1.1.min.js"></script>
+	<link href="css/cover.css" rel="stylesheet">
+
+</head>
+
+<body>
+	<style>
+	.slow .toggle-group { transition: left 0.7s; -webkit-transition: left 0.7s; }
+</style>
+
+<div class="site-wrapper">
+
+	<div class="site-wrapper-inner">
+
+		<div class="cover-container">
+
+			<div class="masthead clearfix">
+				<div class="inner">
+					<h3 class="masthead-brand">Riego</h3>
+					<nav>
+						<ul class="nav masthead-nav">
+							<li class="active"><a href="#manual">Manual</a></li>
+							<li><a href="#automatico">Automatico</a></li>
+							<li><a href="#estadisticas">Estadisticas</a></li>
+							<li><a href="#log" class="scroll-link" data-id="log">Log</a></li>
+						</ul>
+					</nav>
+				</div>
+			</div>
+
+			<div class="inner cover">			
+					<div class="row" id="manual">
+						<h1 class="cover-heading">Zonas de riego</h1>						
+						<div class="col-xs-6 col-md-2 col-xs-offset-3 col-md-offset-5">
+							<h3>Zona 1 <input id="zona1" type="checkbox" data-toggle="toggle" data-style="slow" data-on="Riego<br>ON" data-off="Riego<br>OFF"></h3>
+						</div>						
+					</div>
+					<div class="row">
+						<div class="col-xs-6 col-md-2 col-xs-offset-3 col-md-offset-5">
+							<h3>Zona 2 <input id="zona2" type="checkbox" data-toggle="toggle" data-style="slow" data-on="Riego<br>ON" data-off="Riego<br>OFF"></h3>
+						</div>
+					</div>	
+
+					
+			</div>
+
+			<div class="mastfoot">
+				<div class="inner">
+					<p>Sistema de riego experimental con <a href="http://getbootstrap.com">Bootstrap</a>, <br/>by <a href="http://joaalsai.com">joaalsai</a>.</p>
+				</div>
+			</div>
+
+		</div>
+
+	</div>
+
+</div>
+
+<!-- Funciones de comunicacion con el servidor-->
+<script src="js/socket.io.js"></script>
+<script>
+	var socket = io();
+	
+	$(function() {
+		$('#zona1').change(function() {
+			socket.emit("relay1", Number($(this).prop('checked'))); 
+		})
+	});
+	$(function() {
+		$('#zona2').change(function() {
+			socket.emit("relay2", Number($(this).prop('checked'))); 
+		})
+	});
+	socket.on('relay1', function(data) { //get relay switch status from client
+    	if(data==1){
+    		$('#zona1').bootstrapToggle('on');
+    	}
+    	if(data==0){
+    		$('#zona1').bootstrapToggle('off');
+    	}
+
+ 	});
+
+ 		socket.on('relay2', function(data) { //get relay switch status from client
+    	if(data==1){
+    		$('#zona2').bootstrapToggle('on');
+    	}
+    	if(data==0){
+    		$('#zona2').bootstrapToggle('off');
+    	}
+
+ 	});
+
+ 	socket.on('connected', function(data){
+ 		if(data.led1Status==1){
+ 			$('#zona1').bootstrapToggle('on');
+ 		}
+ 		if(data.led2Status==1){
+ 			$('#zona2').bootstrapToggle('on');
+ 		}
+ 	});
+
+</script>
+
+<!-- Scripts de bootstrap y bootstrap-toogle-->
+<script src="js/highlight.min.js"></script>
+<script src="doc/script.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/bootstrap-toggle.min.js"></script>
+<script type="text/javascript">
+        $(document).ready(function() {
+        // navigation click actions
+        $('.scroll-link').on('click', function(event){
+        event.preventDefault();
+        var sectionID = $(this).attr("data-id");
+        scrollToID('#' + sectionID, 750);
+        });
+        // scroll to top action
+        $('.scroll-top').on('click', function(event) {
+        event.preventDefault();
+        $('html, body').animate({scrollTop:0}, 'slow');
+        });
+        // mobile nav toggle
+        $('#nav-toggle').on('click', function (event) {
+        event.preventDefault();
+        $('#main-nav').toggleClass("open");
+        });
+        });
+        // scroll function
+        function scrollToID(id, speed){
+        var offSet = 50;
+        var targetOffset = $(id).offset().top - offSet;
+        var mainNav = $('#main-nav');
+        $('html,body').animate({scrollTop:targetOffset}, speed);
+        if (mainNav.hasClass("open")) {
+        mainNav.css("height", "1px").removeClass("in").addClass("collapse");
+        mainNav.removeClass("open");
+        }
+        }
+        if (typeof console === "undefined") {
+        console = {
+        log: function() { }
+        };
+        }
+        </script>
+</body>
+</html>
