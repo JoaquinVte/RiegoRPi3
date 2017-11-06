@@ -1,7 +1,7 @@
 {
   "name": "webserver",
   "version": "1.0.0",
-  "license" : "	CC-BY-NC-SA-4.0",
+  "license" : "CC-BY-NC-SA-4.0",
   "description": "Webserver para la gestion de riego domestico",
   "keywords": [
     "node",
