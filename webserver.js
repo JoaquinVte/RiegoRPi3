@@ -18,6 +18,7 @@ app.get('/',function(req,res, next){
 })
 
 server.listen(8080); // 8080 is the server port to listen messages
+registrar(logFile,'Servidor lanzado escuchando por el puerto 8080');
 
 
 
