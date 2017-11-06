@@ -18,6 +18,8 @@
     "socket.io": "^2.0.4",
     "socket.io-client": "^2.0.4"
   },
+  "license" : "	CC-BY-NC-SA-4.0" 
+  ,
   "repository": {
     "type": "git",
     "url": "https://github.com/JoaquinVte/RiegoRPi3"
