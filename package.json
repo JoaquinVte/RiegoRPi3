@@ -1,15 +1,28 @@
 {
-  "name": "sockets",
+  "name": "webserver",
   "version": "1.0.0",
-  "description": "",
-  "keywords": [],
+  "description": "Webserver para la gestion de riego domestico",
+  "keywords": [
+    "node",
+    "fs",
+    "express",
+    "socket.io",
+    "socket.io-client",
+    "RaspberryPi"
+  ],
   "author": "Joaquin Vicente Alonso Saiz",
-  "license": "ISC",
   "dependencies": {
     "express": "^4.16.2",
     "fs": "0.0.1-security",
     "onoff": "^1.1.8",
     "socket.io": "^2.0.4",
     "socket.io-client": "^2.0.4"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/JoaquinVte/RiegoRPi3"
+  },
+  "scripts": {
+    "start": "node webserver.js"
+  },
 }
