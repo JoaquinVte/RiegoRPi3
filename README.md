@@ -11,7 +11,7 @@ Despues simplemente ejecutar:
 
 **npm install**
 
-Esto instalara los moulos necesarios dentro de node_modules. Para ejecutar el servidor, lanzar:
+Esto instalara los modulos necesarios dentro de *node_modules*. Para ejecutar el servidor, lanzar:
 
 **node webserver.js**
 
