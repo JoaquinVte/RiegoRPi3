@@ -7,7 +7,7 @@ Para su instalacion debemos instalar **nodejs-legacy** y **npm**:
 
 **sudo apt-get install nodejs-legacy npm**
 
-Despues simplemente ejecutar:
+Despues simplemente desde el directorio *RiegoRPi3* ejecutar:
 
 **npm install**
 
