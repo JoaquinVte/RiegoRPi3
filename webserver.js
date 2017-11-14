@@ -3,7 +3,7 @@ var RELAY1 = new Gpio(23, 'out'); //use GPIO pin 23 as output
 var RELAY2 = new Gpio(24, 'out'); //use GPIO pin 24 as output
 var relayStatus1 = 0; //global variable for current RELAY1 status
 var relayStatus2 = 0; //global variable for current RELAY2 status 
-var logFile = '~/RiegoRPi3/registro.log';
+var logFile = 'RiegoRPi3/registro.log';
 
 
 var express = require('express');
