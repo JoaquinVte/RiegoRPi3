@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 var io = require('../node_modules/socket.io-client');
 var socket = io.connect('http://localhost:8080', {reconnect: true});
 
