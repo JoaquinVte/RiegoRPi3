@@ -15,6 +15,10 @@ Esto instalara los modulos necesarios dentro de *node_modules*. Para ejecutar el
 
 **node webserver.js**
 
+Es recomendable añadir la entrada siguiente a crontab para que el servicio se ejecute en cada reinicio:
+
+**@reboot /usr/bin/node /home/joaalsai/RiegoRPi3/webserver.js &**
+
 Dependiendo de con que usuario se lance el servidor, nos puede dar un error a la hora de acceder a los puertos GPIO. En este caso ejecutar:
 
 **sudo usermod -a -G gpio tu_usuario**
