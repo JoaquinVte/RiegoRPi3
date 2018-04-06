@@ -1,0 +1,30 @@
+#!/bin/bash
+#
+#	Nombre del archivo: regarZona
+#	Fecha de creación: vie abr  6 12:28:49 CEST 2018
+#	Autor: joaalsai
+#	Descripción del script: 
+#								regarZona ZONA NUMBER[SUFIX]
+#
+# 							ZONA puede ser zona1 o zona2
+#							NUMBER es el numero de segundos para el riego, siendo este un numero entero. 
+#							SUFFIX puede ser 's' para segundos (por defecto),'m' para minutos y 'h' para horas o 'd' para dias.
+#
+#	Ejemplo:		regarZona zona1 1m
+#					regarZona zona2 30s
+
+if [[ $# -ne 2 ]]; then
+        echo "Error. Numero de parametros erroneo" 1>&2
+		exit 64 
+else
+	if [[ $1 != "zona1" && $1 != "zona2" ]]; then
+		echo "Error. Zona no valida" 1>&2
+		exit 64 
+	else
+        $PWD/RiegoRPi3/scripts/enciende.js $1
+        sleep $2
+        $PWD/RiegoRPi3/scripts/apaga.js $1
+    fi
+fi
+
+
