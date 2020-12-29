@@ -1,6 +1,6 @@
 # RiegoRPi3
 Proyecto de riego bajo RPi3.
-
+![alt tag](http://mystorehouse.ddns.net/wp-content/uploads/2017/10/20171122_125640.jpg)
 ![imagen](http://mystorehouse.ddns.net/wp-content/uploads/2017/10/20171122_125640.jpg)
 
 Para su instalacion debemos instalar **nodejs-legacy** y **npm**:
